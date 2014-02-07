@@ -1,8 +1,11 @@
 {
   "name": "jsonml-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Parse HTML and convert to JSONML",
-  "main": "index.js",
+  "main": "./jsonml",
+  "bin": {
+    "jsonml": "./bin/jsonml"
+  },
   "dependencies": {
     "jsdom": "~0.9.0",
     "cli": "~0.4.5",
@@ -23,6 +26,11 @@
     "jsonml2html"
   ],
   "author": "Roman Glebsky <maqentaer@gmail.com>",
+  "contributors": [
+    {
+      "name": "Maqentaer"
+    }
+  ],
   "licenses": [
     {
       "type": "MIT",
