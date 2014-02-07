@@ -1,0 +1,37 @@
+{
+  "name": "jsonml-cli",
+  "version": "0.0.2",
+  "description": "Parse HTML and convert to JSONML",
+  "main": "index.js",
+  "dependencies": {
+    "jsdom": "~0.9.0",
+    "cli": "~0.4.5",
+    "dom2jsonml": "*"
+  },
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "node ./test/index.js",
+    "watch": "nodemon -w ./index.js index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maqentaer/jsonml-cli.git"
+  },
+  "keywords": [
+    "jsonml",
+    "html2jsonml",
+    "jsonml2html"
+  ],
+  "author": "Roman Glebsky <maqentaer@gmail.com>",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/Maqentaer/jsonml-cli/raw/master/LICENSE"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Maqentaer/jsonml-cli/issues",
+    "email": "maqentaer@gmail.com"
+  },
+  "homepage": "https://github.com/maqentaer/jsonml-cli"
+}

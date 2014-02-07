@@ -1,4 +1,4 @@
-html2jsonml
+jsonml-cli
 ===========
 
-Parse any type of HTML and convert to JSONML
+Parse HTML and convert to JSONML
