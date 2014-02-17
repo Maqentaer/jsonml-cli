@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "cli": "~0.4.5",
-    "html2jsonml": ">=0.0.2",
+    "html2jsonml": "0.0.4",
     "request": "~2.33.0"
   },
   "scripts": {

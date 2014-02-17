@@ -22,7 +22,15 @@ cli.getPath = function (default_val, identifier) {
 cli.parse({
 	'out': ['o', 'Output file', 'path'],
 	'in': ['i', 'Input file', 'path'],
-	'url': ['u', 'Input URL', 'url']
+	'url': ['u', 'Input URL', 'url'],
+
+	'noProcInst': ['n', 'Don\'t generate processing instructions'],
+	'lowerTagNames': ['l', 'Tag names in lower case'],
+	'lowerAttrNames': ['L', 'Attribute names in lower case'],
+	'childrenInArray': ['a', 'Children in separate array'],
+
+	'requireAttr': ['r', 'HTML -> JSONML: Add attributes object in any case'],
+	'decodeEntities': ['e', 'HTML -> JSONML: Decode Entities']
 });
 
 var isJson = function(data) {
@@ -39,15 +47,25 @@ var saveData = function(data) {
 };
 
 var parseData = function(data) {
+	var options = {
+		noProcessingInstructions: cli.options.noProcInst,
+		lowerCaseTags:            cli.options.lowerTagNames,
+		lowerCaseAttrNames:       cli.options.lowerAttrNames,
+		childrenInArray:          cli.options.childrenInArray,
+		requireAttributes:        cli.options.requireAttr,
+		decodeEntities:           cli.options.decodeEntities
+	};
 	if (isJson(data))
 	{
 		var jsonML = JSON.parse(data);
-		var html = json2html(jsonML);
-		saveData(html);
+		json2html(jsonML, options, function(err, html) {
+			if (err) throw err;
+			saveData(html);
+		});
 	}
 	else
 	{
-		html2jsonml(data, function(err, jsonMl) {
+		html2jsonml(data, options, function(err, jsonMl) {
 			if (err) throw err;
 			saveData(JSON.stringify(jsonMl));
 		});
