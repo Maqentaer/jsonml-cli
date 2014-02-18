@@ -1,15 +1,15 @@
 {
   "name": "jsonml-cli",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Parse HTML and convert to JSONML",
   "main": "./jsonml",
   "bin": {
     "jsonml": "./bin/jsonml"
   },
   "dependencies": {
-    "cli": "~0.4.5",
     "html2jsonml": "0.0.4",
-    "request": "~2.33.0"
+    "request": "~2.33.0",
+    "commander": "~2.1.0"
   },
   "scripts": {
     "start": "node ./index.js",

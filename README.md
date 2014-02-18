@@ -1,6 +1,6 @@
 #jsonml-cli
 
-Parse HTML and convert to JSONML
+Convert HTML to JSONML or vice versa
 
 ##Usage
 
@@ -12,6 +12,8 @@ Parse HTML and convert to JSONML
   -o, --out PATH         Output file
   -i, --in PATH          Input file
   -u, --url URL          Input URL
+
+  -s, --space STRING     Adds indentation, white space, and line break characters
 
   -n, --noProcInst       Don't generate processing instructions
   -l, --lowerTagNames    Tag names in lower case
