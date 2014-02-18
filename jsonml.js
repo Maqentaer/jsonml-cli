@@ -6,24 +6,31 @@ var html2jsonml = require('html2jsonml');
 var json2html = require('./lib/json2html');
 var cli = require('commander');
 
-cli.helpInfo = cli.helpInformation;
-cli.helpInformation = function(){
-	return '\n  ' + cli.description() + '\n' + cli.helpInfo();
+cli.helpInformationOld = cli.helpInformation;
+cli.helpInformation = function() {
+	return '\n  ' + cli.description() + '\n' + cli.helpInformationOld();
 };
 
+cli.optionHelpOld = cli.optionHelp;
+cli.optionHelp = function() {
+	var help = cli.optionHelpOld().split('\n');
+	help.push(help.shift());
+	return help.join('\n');
+}
+
 cli
-	.version(require('./package.json').version, '-v, --version')
 	.description('Convert HTML to JSONML or vice versa')
-	.option('-o, --out <FILE>', 'Output file')
-	.option('-i, --in <FILE>', 'Input file')
-	.option('-u, --url <URL>', 'Input URL')
-	.option('-s, --space [STRING]', 'Adds indentation, white space and line break')
-	.option('-n, --noProcInst', 'Don\'t generate processing instructions')
-	.option('-l, --lowerTagNames', 'Tag names in lower case')
-	.option('-L, --lowerAttrNames', 'Attribute names in lower case')
-	.option('-a, --childrenInArray', 'Children in separate array')
-	.option('-r, --requireAttr', 'HTML -> JSONML: Add attributes object in any case')
-	.option('-e, --decodeEntities', 'HTML -> JSONML: Decode Entities')
+	.option('-o, --out <file>', 'output file')
+	.option('-i, --in <file>', 'input file')
+	.option('-u, --url <url>', 'input URL\n')
+	.option('-s, --space [string]', 'adds indentation, white space and line break\n')
+	.option('-n, --noProcInst', 'don\'t generate processing instructions')
+	.option('-l, --lowerTagNames', 'tag names in lower case')
+	.option('-L, --lowerAttrNames', 'attribute names in lower case')
+	.option('-a, --childrenInArray', 'children in separate array')
+	.option('-r, --requireAttr', 'HTML -> JSONML: add attributes object in any case')
+	.option('-e, --decodeEntities', 'HTML -> JSONML: decode Entities\n')
+	.version(require('./package.json').version, '-v, --version')
 	.on('--help', function(){
 		console.log('    Without -i, --in and -u, --url');
 		console.log('      input from stdin');
@@ -39,7 +46,7 @@ var showError = function(err) {
 };
 
 var isJson = function(data) {
-	var re = /^\s*\[/;
+	var re = /^\s*[\[\{]/;
 	return re.test(data);
 };
 

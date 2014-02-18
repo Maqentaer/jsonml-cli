@@ -4,26 +4,26 @@ Convert HTML to JSONML or vice versa
 
 ##Usage
 
-  jsonml.js [OPTIONS]
+  jsonml.js [options]
 
 ##Options
 
 ```
-  -o, --out PATH         Output file
-  -i, --in PATH          Input file
-  -u, --url URL          Input URL
+    -o, --out <file>       output file
+    -i, --in <file>        input file
+    -u, --url <url>        input URL
 
-  -s, --space STRING     Adds indentation, white space, and line break characters
+    -s, --space [string]   adds indentation, white space and line break
 
-  -n, --noProcInst       Don't generate processing instructions
-  -l, --lowerTagNames    Tag names in lower case
-  -L, --lowerAttrNames   Attribute names in lower case
-  -a, --childrenInArray  Children in separate array
-  -r, --requireAttr      HTML -> JSONML: Add attributes object in any case
-  -e, --decodeEntities   HTML -> JSONML: Decode Entities
+    -n, --noProcInst       don't generate processing instructions
+    -l, --lowerTagNames    tag names in lower case
+    -L, --lowerAttrNames   attribute names in lower case
+    -a, --childrenInArray  children in separate array
+    -r, --requireAttr      HTML -> JSONML: add attributes object in any case
+    -e, --decodeEntities   HTML -> JSONML: decode Entities
 
-  -v, --version          Display the current version
-  -h, --help             Display help and usage details
+    -v, --version          output the version number
+    -h, --help             output usage information
 ```
 
 ####Without -i, --in and -u, --url
