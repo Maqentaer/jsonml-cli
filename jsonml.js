@@ -1,5 +1,15 @@
 #!/usr/bin/env node
 
+/*
+ jsonml.js
+ Convert Convert HTML to JSONML or vice versa
+
+ Created: 2014-02-14
+
+ Copyright (c)2014 Roman Glebsky <maqentaer@gmail.com>
+ Distributed under The MIT License: http://github.com/Maqentaer/jsonml-cli/raw/master/LICENSE
+ */
+
 var fs = require('fs');
 var request = require('request');
 var html2jsonml = require('html2jsonml');
@@ -16,7 +26,7 @@ cli.optionHelp = function() {
 	var help = cli.optionHelpOld().split('\n');
 	help.push(help.shift());
 	return help.join('\n');
-}
+};
 
 cli
 	.description('Convert HTML to JSONML or vice versa')
@@ -53,7 +63,9 @@ var isJson = function(data) {
 var saveData = function(data) {
 	if (cli['out']) {
 		fs.writeFile(cli['out'], data, function(err) {
-			if (err) showError(err);
+			if (err) {
+				showError(err);
+			}
 		});
 	} else {
 		process.stdout.write(data);
@@ -78,12 +90,16 @@ var parseData = function(data) {
 			return showError(err);
 		}
 		json2html(jsonML, options, function(err, html) {
-			if (err) return showError(err);
+			if (err) {
+				return showError(err);
+			}
 			saveData(html);
 		});
 	} else {
 		html2jsonml(data, options, function(err, jsonMl) {
-			if (err) return showError(err);
+			if (err) {
+				return showError(err);
+			}
 			saveData(JSON.stringify(jsonMl, null, options.space));
 		});
 	}
@@ -91,12 +107,16 @@ var parseData = function(data) {
 
 if (cli['url']) {
 	request(cli['url'], function(err, res, body) {
-		if (err) return showError(err);
+		if (err) {
+			return showError(err);
+		}
 		parseData(body);
 	});
 } else if (cli['in']) {
 	fs.readFile(cli['in'], 'utf8', function(err, content) {
-		if (err) return showError(err);
+		if (err) {
+			return showError(err);
+		}
 		parseData(content);
 	});
 } else {

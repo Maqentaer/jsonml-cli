@@ -1,7 +1,7 @@
 {
   "name": "jsonml-cli",
   "version": "0.1.0",
-  "description": "Parse HTML and convert to JSONML",
+  "description": "Convert HTML to JSONML or vice versa",
   "main": "./jsonml",
   "bin": {
     "jsonml": "./bin/jsonml"
