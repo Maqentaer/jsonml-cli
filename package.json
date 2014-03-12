@@ -23,7 +23,9 @@
   "keywords": [
     "jsonml",
     "html2jsonml",
-    "jsonml2html"
+    "jsonml2html",
+    "html",
+    "json"
   ],
   "author": "Roman Glebsky <maqentaer@gmail.com>",
   "contributors": [
